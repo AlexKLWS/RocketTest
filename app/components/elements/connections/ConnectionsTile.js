@@ -67,7 +67,8 @@ export default class ConnectionsTile extends Component {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    padding: 7.5,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
     justifyContent: 'space-between',
     flexDirection: 'column'
   },

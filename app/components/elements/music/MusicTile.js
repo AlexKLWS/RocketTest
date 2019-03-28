@@ -60,11 +60,11 @@ const styles = StyleSheet.create({
   rewind: {
     transform: [{ rotate: '180deg' }],
     paddingLeft: 24,
-    paddingRight: 14
+    paddingRight: 16
   },
   play: {},
   forward: {
     paddingLeft: 20,
-    paddingRight: 16
+    paddingRight: 18
   }
 })

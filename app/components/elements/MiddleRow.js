@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import SimpleButton from './SimpleButton'
 import ScreenMirrorTile from './screenMirror/ScreenMirrorTile'
+import {
+  selectedOrientationLockColor,
+  selectedNightModeColor
+} from '../../utils/colorConstants'
 
 export default class MiddleRow extends Component {
   render() {
@@ -9,8 +13,19 @@ export default class MiddleRow extends Component {
       <View style={styles.row}>
         <View style={styles.column}>
           <View style={styles.row}>
-            <SimpleButton name="Orientation-Lock" size={32} />
-            <SimpleButton name="Night-Mode" size={25} style={{ padding: 4 }}/>
+            <SimpleButton
+              name="Orientation-Lock"
+              size={32}
+              interactable={true}
+              iconActiveColor={selectedOrientationLockColor}
+            />
+            <SimpleButton
+              name="Night-Mode"
+              size={25}
+              style={{ paddingHorizontal: 4, paddingVertical:3.5 }}
+              interactable={true}
+              iconActiveColor={selectedNightModeColor}
+            />
           </View>
           <ScreenMirrorTile />
         </View>
