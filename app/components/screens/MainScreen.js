@@ -16,7 +16,7 @@ export default class MainScreen extends Component {
     const { currentRowId } = this.state
     return (
       <TouchableWithoutFeedback onPress={this._onRowElementShrink}>
-        <View style={currentRowId ? styles.containerExpanded : styles.containerNormal}>
+        <View style={ styles.containerNormal}>
           <View style={styles.elementsHolder}>
             {(!currentRowId || currentRowId === TOP_ROW_ID) && (
               <TopRow
