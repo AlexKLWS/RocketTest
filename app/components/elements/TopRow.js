@@ -17,7 +17,6 @@ export default class TopRow extends Component {
 const styles = StyleSheet.create({
   row: {
     justifyContent: 'space-between',
-    flexDirection: 'row',
-    backgroundColor: 'rgba(255, 255, 255, 0.0)'
+    flexDirection: 'row'
   }
 })

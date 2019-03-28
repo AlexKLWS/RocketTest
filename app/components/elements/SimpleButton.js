@@ -1,34 +1,33 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
+import { Animated, StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
 import InteractableTile from './InteractableTile'
 import CustomIcon from '../icons/CustomIcon'
+import { defaultIconColor } from '../../utils/colorConstants'
 
 export default class SimpleButton extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { isActive: null }
+  }
+
   render() {
     return (
-      <InteractableTile
-        ref={component => {
-          this.interactableTileRef = component
-        }}
-      >
-        <View style={styles.buttonContainer}>
-          <CustomIcon name={this.props.name} size={this.props.size} color="#FFF" style={this.props.style || {}} />
-        </View>
+      <InteractableTile>
+        <Animated.View style={{backgroundColor: '#FFF'}}>
+          <View style={styles.buttonContainer}>
+            <CustomIcon
+              name={this.props.name}
+              size={this.props.size}
+              color={this.state.isActive ? this.props.activeIconColor : defaultIconColor}
+              style={this.props.style || {}}
+            />
+          </View>
+        </Animated.View>
       </InteractableTile>
     )
   }
 
-  onPressInContainerHandle = () => {
-    if (this.interactableTileRef) {
-      this.interactableTileRef.onPressInHandle()
-    }
-  }
-
-  onPressOutContainerHandle = () => {
-    if (this.interactableTileRef) {
-      this.interactableTileRef.onPressOutHandle()
-    }
-  }
+  _onPressContainerHandle = () => {}
 }
 
 const styles = StyleSheet.create({

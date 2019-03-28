@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
 import InteractableTile from '../InteractableTile'
 import ConnectionsButton from './ConnectionsButton'
-import { connectionsGreen, connectionsBlue, connectionsOrange } from '../../../utils/colorConstants'
+import { connectionsGreenColor, connectionsBlueColor, connectionsOrangeColor } from '../../../utils/colorConstants'
 
 export default class ConnectionsTile extends Component {
   render() {
@@ -18,7 +18,7 @@ export default class ConnectionsTile extends Component {
               name="Aeroplane-Mode"
               size={22}
               style={{ paddingLeft: 3 }}
-              activeColor={connectionsOrange}
+              activeColor={connectionsOrangeColor}
               onPressInContainerHandle={this.onPressInContainerHandle}
               onPressOutContainerHandle={this.onPressOutContainerHandle}
             />
@@ -26,7 +26,7 @@ export default class ConnectionsTile extends Component {
               name="Carrier"
               size={26}
               style={{ paddingLeft: 1 }}
-              activeColor={connectionsGreen}
+              activeColor={connectionsGreenColor}
               onPressInContainerHandle={this.onPressInContainerHandle}
               onPressOutContainerHandle={this.onPressOutContainerHandle}
             />
@@ -35,14 +35,14 @@ export default class ConnectionsTile extends Component {
             <ConnectionsButton
               name="Wifi"
               size={19}
-              activeColor={connectionsBlue}
+              activeColor={connectionsBlueColor}
               onPressInContainerHandle={this.onPressInContainerHandle}
               onPressOutContainerHandle={this.onPressOutContainerHandle}
             />
             <ConnectionsButton
               name="Bluetooth"
               size={26}
-              activeColor={connectionsBlue}
+              activeColor={connectionsBlueColor}
               onPressInContainerHandle={this.onPressInContainerHandle}
               onPressOutContainerHandle={this.onPressOutContainerHandle}
             />

@@ -9,12 +9,22 @@ export default class InteractableTile extends Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPressIn={this.onPressInHandle} onPressOut={this.onPressOutHandle}>
+      <TouchableWithoutFeedback
+        onPressIn={this.onPressInHandle}
+        onPressOut={this.onPressOutHandle}
+        onPress={this._onPressHandle}
+      >
         <Animated.View style={[{ transform: [{ scale: this.scaleValue }] }, styles.tile]}>
           {this.props.children}
         </Animated.View>
       </TouchableWithoutFeedback>
     )
+  }
+
+  _onPressHandle = () => {
+    if (this.props.onPress) {
+      this.props.onPress()
+    }
   }
 
   onPressInHandle = () => {

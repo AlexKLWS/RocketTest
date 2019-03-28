@@ -24,12 +24,10 @@ export default class MiddleRow extends Component {
 const styles = StyleSheet.create({
   row: {
     justifyContent: 'space-between',
-    flexDirection: 'row',
-    backgroundColor: 'rgba(255, 255, 255, 0.0)'
+    flexDirection: 'row'
   },
   column: {
     justifyContent: 'space-between',
-    flexDirection: 'column',
-    backgroundColor: 'rgba(255, 255, 255, 0.0)'
+    flexDirection: 'column'
   }
 })

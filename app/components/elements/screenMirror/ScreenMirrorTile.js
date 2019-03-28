@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import InteractableTile from '../InteractableTile'
 import CustomIcon from '../../icons/CustomIcon'
+import { defaultIconColor } from '../../../utils/colorConstants'
 
 export default class ScreenMirrorTile extends Component {
   render() {
     return (
       <InteractableTile>
         <View style={styles.container}>
-          <CustomIcon name="AirPlay" size={22} color="#FFF" style={styles.icon} />
+          <CustomIcon name="AirPlay" size={22} color={defaultIconColor} style={styles.icon} />
           <Text style={styles.label}>{'Screen\nMirroring'}</Text>
         </View>
       </InteractableTile>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, TouchableWithoutFeedback, Animated } from 'react-native'
 import CustomIcon from '../../icons/CustomIcon'
-import { connectionsDefault } from '../../../utils/colorConstants'
+import { connectionsDefaultColor, defaultIconColor } from '../../../utils/colorConstants'
 
 export default class ConnectionsButton extends Component {
   constructor(props) {
@@ -19,7 +19,12 @@ export default class ConnectionsButton extends Component {
         onPress={this._onPressHandle}
       >
         <Animated.View style={[{ backgroundColor: interpolatedColor }, styles.button]}>
-          <CustomIcon name={this.props.name} size={this.props.size} color="#FFF" style={this.props.style || {}} />
+          <CustomIcon
+            name={this.props.name}
+            size={this.props.size}
+            color={defaultIconColor}
+            style={this.props.style || {}}
+          />
         </Animated.View>
       </TouchableWithoutFeedback>
     )
@@ -44,16 +49,16 @@ export default class ConnectionsButton extends Component {
   }
 
   _calculateInterpolatedColor = () => {
-    if(this.state.isActive === null) {
-      return connectionsDefault
+    if (this.state.isActive === null) {
+      return connectionsDefaultColor
     } else {
-    return this._colorValue.interpolate({
-      inputRange: [0, 100],
-      outputRange: this.state.isActive
-        ? [connectionsDefault, this.props.activeColor]
-        : [this.props.activeColor, connectionsDefault]
-    })
-  }
+      return this._colorValue.interpolate({
+        inputRange: [0, 100],
+        outputRange: this.state.isActive
+          ? [connectionsDefaultColor, this.props.activeColor]
+          : [this.props.activeColor, connectionsDefaultColor]
+      })
+    }
   }
 }
 
