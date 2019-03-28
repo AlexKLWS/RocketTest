@@ -30,8 +30,7 @@ export default class ConnectionsButton extends Component {
       this._colorValue.setValue(0)
       Animated.timing(this._colorValue, {
         toValue: 100,
-        duration: 250,
-        useNativeDriver: true
+        duration: 250
       }).start()
     })
   }
