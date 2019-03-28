@@ -108,7 +108,7 @@ export default class ConnectionsTile extends Component {
                 style={{
                   paddingVertical: 5,
                   marginLeft: 27,
-                  marginRight: 15,
+                  marginRight: 20,
                   justifyContent: 'center',
                   alignItems: 'center',
                   flexDirection: 'column'
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   },
   expandedButtonHolder: {
     paddingVertical: 5,
-    marginHorizontal: 27,
+    marginHorizontal: 32,
     justifyContent: 'space-between',
     flexDirection: 'column'
   },
