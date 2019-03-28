@@ -5,7 +5,6 @@ import { setTileIsExpanded } from '../../redux/actions'
 import { layoutAnimationConfig } from '../../utils/layoutAnimationConfig'
 
 const mapStateToProps = state => ({
-  isExpanded: state.expanded,
   expandedElementId: state.elementId
 })
 
