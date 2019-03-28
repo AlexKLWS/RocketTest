@@ -69,7 +69,12 @@ export default class SettingSlider extends Component {
       <InteractableTile>
         <View style={styles.container}>
           <View style={[styles.bar, { height: this.props.initialHeight || 80 }]}>
-            <CustomIcon name={this.props.name} size={this.props.iconSize} color={sliderIconColor} style={this.props.iconStyle || styles.icon} />
+            <CustomIcon
+              name={this.props.name}
+              size={this.props.iconSize}
+              color={sliderIconColor}
+              style={this.props.iconStyle || styles.icon}
+            />
           </View>
         </View>
       </InteractableTile>

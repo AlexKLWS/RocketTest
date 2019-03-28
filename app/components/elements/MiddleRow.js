@@ -28,9 +28,14 @@ export default class MiddleRow extends Component {
           <ScreenMirrorTile />
         </View>
         <SettingSlider name="Brightness" iconSize={32} initialHeight={60} />
-        <SettingSlider name="Volume" iconSize={26} initialHeight={100} iconStyle={{
-    padding: 19
-  }}/>
+        <SettingSlider
+          name="Volume"
+          iconSize={26}
+          initialHeight={100}
+          iconStyle={{
+            padding: 19
+          }}
+        />
       </View>
     )
   }
