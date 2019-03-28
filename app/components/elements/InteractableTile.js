@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   }
 })
 
+//forwardRef doesn't work with legacy decorator
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
