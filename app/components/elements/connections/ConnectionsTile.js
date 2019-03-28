@@ -11,6 +11,8 @@ export default class ConnectionsTile extends Component {
         ref={component => {
           this.interactableTileRef = component
         }}
+        isExpandable={true}
+        onPress={this._onTilePress}
       >
         <View style={styles.buttonContainer}>
           <View style={styles.buttonRow}>
@@ -52,6 +54,12 @@ export default class ConnectionsTile extends Component {
     )
   }
 
+  _onTilePress = () => {
+    if (this.props.onExpand) {
+      this.props.onExpand()
+    }
+  }
+
   onPressInContainerHandle = () => {
     if (this.interactableTileRef) {
       this.interactableTileRef.onPressInHandle()
@@ -61,6 +69,12 @@ export default class ConnectionsTile extends Component {
   onPressOutContainerHandle = () => {
     if (this.interactableTileRef) {
       this.interactableTileRef.onPressOutHandle()
+    }
+  }
+
+  onShrink = () => {
+    if (this.interactableTileRef) {
+      this.interactableTileRef.onShrink()
     }
   }
 }

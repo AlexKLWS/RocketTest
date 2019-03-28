@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableWithoutFeedback, Animated, Easing } from 'react-native'
+import { StyleSheet, View, TouchableWithoutFeedback, Animated, Easing, LayoutAnimation } from 'react-native'
 
 export default class InteractableTile extends Component {
   constructor(props) {
     super(props)
+    this.state = { isExpanded: false }
     this.scaleValue = new Animated.Value(1)
   }
 
@@ -14,9 +15,7 @@ export default class InteractableTile extends Component {
         onPressOut={this.onPressOutHandle}
         onPress={this._onPressHandle}
       >
-        <Animated.View style={[{ transform: [{ scale: this.scaleValue }] }, styles.tile]}>
-          {this.props.children}
-        </Animated.View>
+        <Animated.View style={this._calculateStyles()}>{this.props.children}</Animated.View>
       </TouchableWithoutFeedback>
     )
   }
@@ -24,6 +23,15 @@ export default class InteractableTile extends Component {
   _onPressHandle = () => {
     if (this.props.onPress) {
       this.props.onPress()
+    }
+    if (this.props.isExpandable && !this.state.isExpanded) {
+      this.setState({ isExpanded: true })
+    }
+  }
+
+  onShrink = () => {
+    if (this.props.isExpandable && this.state.isExpanded) {
+      this.setState({ isExpanded: false })
     }
   }
 
@@ -42,15 +50,35 @@ export default class InteractableTile extends Component {
       useNativeDriver: true
     }).start()
   }
+
+  _calculateStyles = () => {
+    if (!this.state.isExpanded) {
+      return [{ transform: [{ scale: this.scaleValue }] }, styles.normalTile]
+    } else {
+      return styles.expandedTile
+    }
+  }
 }
 
 const styles = StyleSheet.create({
-  tile: {
+  normalTile: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderRadius: 18,
     overflow: 'hidden',
     margin: 7
+  },
+  expandedTile: {
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 36,
+    overflow: 'hidden',
+    width: 321,
+    height: 355,
+    marginTop: 156,
+    marginHorizontal: 27
   }
 })

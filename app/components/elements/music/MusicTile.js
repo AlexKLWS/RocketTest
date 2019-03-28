@@ -11,6 +11,8 @@ export default class MusicTile extends Component {
         ref={component => {
           this.interactableTileRef = component
         }}
+        isExpandable={true}
+        onPress={this._onTilePress}
       >
         <Text style={styles.songTitle}>All Star</Text>
         <Text style={styles.artist}>Smash Mouth</Text>
@@ -23,6 +25,18 @@ export default class MusicTile extends Component {
         </View>
       </InteractableTile>
     )
+  }
+
+  _onTilePress = () => {
+    if(this.props.onExpand) {
+      this.props.onExpand()
+    }
+  }
+
+  onShrink = () => {
+    if(this.interactableTileRef) {
+      this.interactableTileRef.onShrink()
+    }
   }
 
   onPressInContainerHandle = () => {
