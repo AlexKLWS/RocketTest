@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderRadius: 18,
+    overflow: 'hidden',
     margin: 7
   }
 })

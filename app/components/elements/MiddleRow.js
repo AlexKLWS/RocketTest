@@ -10,11 +10,11 @@ export default class MiddleRow extends Component {
         <View style={styles.column}>
           <View style={styles.row}>
             <SimpleButton name="Orientation-Lock" size={32} />
-            <SimpleButton name="Night-Mode" size={25} style={{ paddingHorizontal: 4 }}/>
+            <SimpleButton name="Night-Mode" size={25} style={{ padding: 4 }}/>
           </View>
           <ScreenMirrorTile />
         </View>
-        <SimpleButton name="Calculator" size={32} style={{ paddingHorizontal: 5 }} />
+        <SimpleButton name="Calculator" size={32} style={{ padding: 5 }} />
         <SimpleButton name="Camera" size={25} />
       </View>
     )

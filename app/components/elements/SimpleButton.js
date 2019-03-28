@@ -13,16 +13,14 @@ export default class SimpleButton extends Component {
   render() {
     return (
       <InteractableTile>
-        <Animated.View style={{backgroundColor: '#FFF'}}>
           <View style={styles.buttonContainer}>
             <CustomIcon
               name={this.props.name}
               size={this.props.size}
               color={this.state.isActive ? this.props.activeIconColor : defaultIconColor}
-              style={this.props.style || {}}
+              style={[styles.icon, this.props.style || {}]}
             />
           </View>
-        </Animated.View>
       </InteractableTile>
     )
   }
@@ -32,8 +30,10 @@ export default class SimpleButton extends Component {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    padding: 18,
-    justifyContent: 'space-between',
-    flexDirection: 'column'
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  icon: {
+    margin: 19
   }
 })
