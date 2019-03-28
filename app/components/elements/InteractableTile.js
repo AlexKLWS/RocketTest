@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderRadius: 18,
-    margin: 7.5
+    margin: 7
   }
 })
