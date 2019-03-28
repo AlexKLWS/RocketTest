@@ -5,16 +5,16 @@ export const layoutAnimationConfig = {
   create: {
     type: LayoutAnimation.Types.spring,
     property: LayoutAnimation.Properties.opacity,
-    springDamping: 0.7
+    springDamping: 0.8
   },
   update: {
     type: LayoutAnimation.Types.spring,
     property: LayoutAnimation.Properties.scaleXY,
-    springDamping: 0.7
+    springDamping: 0.8
   },
    delete: {
     type: LayoutAnimation.Types.spring,
     property: LayoutAnimation.Properties.opacity,
-    springDamping: 0.7
+    springDamping: 0.8
   }
 }
