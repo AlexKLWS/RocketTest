@@ -1,64 +1,25 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { StyleSheet, View, LayoutAnimation } from 'react-native'
 import ConnectionsTile from '../elements/connections/ConnectionsTile'
 import MusicTile from '../elements/music/MusicTile'
 import { TOP_ROW_ID } from '../../utils/rowIds'
+import { CONNECTIONS_TILE_ID, MUSIC_TILE_ID } from '../../utils/elementsIds'
 
+const mapStateToProps = state => ({
+  expandedElementId: state.elementId
+})
+
+@connect(mapStateToProps)
 export default class TopRow extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isConnectionsTileExpanded: false,
-      isMusicTileExpanded: false
-    }
-  }
-
   render() {
-    const { isConnectionsTileExpanded, isMusicTileExpanded } = this.state
+    const { expandedElementId } = this.props
     return (
       <View style={styles.row}>
-        {!isMusicTileExpanded && (
-          <ConnectionsTile
-            onExpand={this._onConnectionsTileExpanded}
-            ref={component => {
-              this._tempConnectionsRef = component
-            }}
-          />
-        )}
-        {!isConnectionsTileExpanded && (
-          <MusicTile
-            onExpand={this._onMusicTileExpanded}
-            ref={component => {
-              this._tempMusicRef = component
-            }}
-          />
-        )}
+        {expandedElementId !== MUSIC_TILE_ID && <ConnectionsTile rowId={TOP_ROW_ID} />}
+        {expandedElementId !== CONNECTIONS_TILE_ID && <MusicTile rowId={TOP_ROW_ID} />}
       </View>
     )
-  }
-
-  onComponentShrink = () => {
-    this.setState({ isConnectionsTileExpanded: false, isMusicTileExpanded: false })
-    if (this._tempConnectionsRef) {
-      this._tempConnectionsRef.onShrink()
-    }
-    if (this._tempMusicRef) {
-      this._tempMusicRef.onShrink()
-    }
-  }
-
-  _onConnectionsTileExpanded = () => {
-    if (this.props.onCurrentRowElementExpand) {
-      this.props.onCurrentRowElementExpand(TOP_ROW_ID)
-    }
-    this.setState({ isConnectionsTileExpanded: true })
-  }
-
-  _onMusicTileExpanded = () => {
-    if (this.props.onCurrentRowElementExpand) {
-      this.props.onCurrentRowElementExpand(TOP_ROW_ID)
-    }
-    this.setState({ isMusicTileExpanded: true })
   }
 }
 

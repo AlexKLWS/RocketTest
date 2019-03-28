@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import InteractableTile from '../InteractableTile'
 import CustomIcon from '../../icons/CustomIcon'
 import { connectionsGreen, connectionsBlue, connectionsOrange } from '../../../utils/colorConstants'
+import { MUSIC_TILE_ID } from '../../../utils/elementsIds'
 
 export default class MusicTile extends Component {
   render() {
@@ -12,7 +13,8 @@ export default class MusicTile extends Component {
           this.interactableTileRef = component
         }}
         isExpandable={true}
-        onPress={this._onTilePress}
+        rowId={this.props.rowId}
+        elementId={MUSIC_TILE_ID}
       >
         <Text style={styles.songTitle}>All Star</Text>
         <Text style={styles.artist}>Smash Mouth</Text>
@@ -25,18 +27,6 @@ export default class MusicTile extends Component {
         </View>
       </InteractableTile>
     )
-  }
-
-  _onTilePress = () => {
-    if(this.props.onExpand) {
-      this.props.onExpand()
-    }
-  }
-
-  onShrink = () => {
-    if(this.interactableTileRef) {
-      this.interactableTileRef.onShrink()
-    }
   }
 
   onPressInContainerHandle = () => {

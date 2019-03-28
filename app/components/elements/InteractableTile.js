@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { StyleSheet, View, TouchableWithoutFeedback, Animated, Easing, LayoutAnimation } from 'react-native'
+import { setTileIsExpanded } from '../../redux/actions'
+import { layoutAnimationConfig } from '../../utils/layoutAnimationConfig'
 
-export default class InteractableTile extends Component {
+const mapStateToProps = state => ({
+  isExpanded: state.expanded,
+  expandedElementId: state.elementId
+})
+
+const mapDispatchToProps = dispatch => ({
+  setTileIsExpanded: (rowId, elementId) => dispatch(setTileIsExpanded(rowId, elementId))
+})
+
+class InteractableTile extends Component {
   constructor(props) {
     super(props)
-    this.state = { isExpanded: false }
     this.scaleValue = new Animated.Value(1)
   }
 
@@ -24,14 +35,9 @@ export default class InteractableTile extends Component {
     if (this.props.onPress) {
       this.props.onPress()
     }
-    if (this.props.isExpandable && !this.state.isExpanded) {
-      this.setState({ isExpanded: true })
-    }
-  }
-
-  onShrink = () => {
-    if (this.props.isExpandable && this.state.isExpanded) {
-      this.setState({ isExpanded: false })
+    if (this.props.isExpandable && this.props.expandedElementId !== this.props.elementId) {
+      LayoutAnimation.configureNext(layoutAnimationConfig)
+      this.props.setTileIsExpanded(this.props.rowId, this.props.elementId)
     }
   }
 
@@ -52,10 +58,10 @@ export default class InteractableTile extends Component {
   }
 
   _calculateStyles = () => {
-    if (!this.state.isExpanded) {
-      return [{ transform: [{ scale: this.scaleValue }] }, styles.normalTile]
-    } else {
+    if (this.props.expandedElementId && this.props.expandedElementId === this.props.elementId) {
       return styles.expandedTile
+    } else {
+      return [{ transform: [{ scale: this.scaleValue }] }, styles.normalTile]
     }
   }
 }
@@ -82,3 +88,10 @@ const styles = StyleSheet.create({
     marginLeft: -161
   }
 })
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  null,
+  { forwardRef: true }
+)(InteractableTile)

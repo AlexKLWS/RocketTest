@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
 import InteractableTile from '../InteractableTile'
 import ConnectionsButton from './ConnectionsButton'
 import { connectionsGreenColor, connectionsBlueColor, connectionsOrangeColor } from '../../../utils/colorConstants'
+import { CONNECTIONS_TILE_ID } from '../../../utils/elementsIds'
 
 export default class ConnectionsTile extends Component {
   render() {
@@ -12,7 +13,8 @@ export default class ConnectionsTile extends Component {
           this.interactableTileRef = component
         }}
         isExpandable={true}
-        onPress={this._onTilePress}
+        rowId={this.props.rowId}
+        elementId={CONNECTIONS_TILE_ID}
       >
         <View style={styles.buttonContainer}>
           <View style={styles.buttonRow}>
@@ -54,12 +56,6 @@ export default class ConnectionsTile extends Component {
     )
   }
 
-  _onTilePress = () => {
-    if (this.props.onExpand) {
-      this.props.onExpand()
-    }
-  }
-
   onPressInContainerHandle = () => {
     if (this.interactableTileRef) {
       this.interactableTileRef.onPressInHandle()
@@ -69,12 +65,6 @@ export default class ConnectionsTile extends Component {
   onPressOutContainerHandle = () => {
     if (this.interactableTileRef) {
       this.interactableTileRef.onPressOutHandle()
-    }
-  }
-
-  onShrink = () => {
-    if (this.interactableTileRef) {
-      this.interactableTileRef.onShrink()
     }
   }
 }
