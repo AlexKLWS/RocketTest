@@ -11,6 +11,7 @@ export default class ConnectionsButton extends Component {
   }
 
   render() {
+    const { name, size, style } = this.props
     const interpolatedColor = this._calculateInterpolatedColor()
     return (
       <TouchableWithoutFeedback
@@ -19,12 +20,7 @@ export default class ConnectionsButton extends Component {
         onPress={this._onPressHandle}
       >
         <Animated.View style={[{ backgroundColor: interpolatedColor }, styles.button]}>
-          <CustomIcon
-            name={this.props.name}
-            size={this.props.size}
-            color={defaultIconColor}
-            style={this.props.style || {}}
-          />
+          <CustomIcon name={name} size={size} color={defaultIconColor} style={style || {}} />
         </Animated.View>
       </TouchableWithoutFeedback>
     )

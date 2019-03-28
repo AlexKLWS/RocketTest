@@ -4,6 +4,7 @@ export const connectionsBlueColor = '#007AFF'
 export const connectionsOrangeColor = '#FF9500'
 
 export const defaultIconColor = '#FFFFFF'
+export const sliderIconColor = 'rgba(0, 0, 0, 0.3)'
 export const selectedOrientationLockColor = '#FE6064'
 export const selectedNightModeColor = '#695DDB'
 export const selectedFlashLightColor = '#007AFF'
